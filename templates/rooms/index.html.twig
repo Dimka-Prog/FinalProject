@@ -4,46 +4,49 @@
 
 {% block body %}
     <form action="/room/type/" style="float: left">
-        <input type="submit" name="action" value="Типы комнат">
+        <input class="buttonTable" type="submit" name="action" value="Типы комнат" style="width: 125px; height: 30px; font-size: 14px; background-color: #0f6674; color: white">
+    </form>
+    <form action="/rooms/" style="float: left">
+        <input type="submit" name="action" value="Комнаты" style="width: 125px; height: 30px; font-size: 14px; background-color: #0f6674; color: white">
     </form>
     <form action="/hotel/staff/" style="float: left">
-        <input type="submit" name="action" value="Сотрудники">
+        <input type="submit" name="action" value="Сотрудники" style="width: 125px; height: 30px; font-size: 14px; background-color: #0f6674; color: white">
     </form>
     <form action="/guests/" style="float: left">
-        <input type="submit" name="action" value="Гости">
+        <input type="submit" name="action" value="Гости" style="width: 125px; height: 30px; font-size: 14px; background-color: #0f6674; color: white">
     </form>
     <form action="/settling/room/">
-        <input type="submit" name="action" value="Даты">
+        <input type="submit" name="action" value="Даты" style="width: 125px; height: 30px; font-size: 14px; background-color: #0f6674; color: white">
     </form>
     <h1>Комнаты</h1>
 
-    <table class="table">
+    <table class="table" style="border-collapse: collapse; border: 1px solid gray; width: 700px;">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Номер</th>
-                <th>Места</th>
-                <th>Этаж</th>
-                <th>Статус</th>
-                <th>Действия</th>
+                <th style="border: 1px solid grey; background-color: #80bdff; color: white; text-align: center; width: 100px">ID</th>
+                <th style="border: 1px solid grey; background-color: #80bdff; color: white; text-align: center; width: 100px">Номер</th>
+                <th style="border: 1px solid grey; background-color: #80bdff; color: white; text-align: center; width: 100px">Места</th>
+                <th style="border: 1px solid grey; background-color: #80bdff; color: white; text-align: center; width: 100px">Этаж</th>
+                <th style="border: 1px solid grey; background-color: #80bdff; color: white; text-align: center; width: 100px">Статус</th>
+                <th style="border: 1px solid grey; background-color: #80bdff; color: white; text-align: center; width: 100px">Действия</th>
             </tr>
         </thead>
         <tbody>
         {% for room in rooms %}
             <tr>
-                <td>{{ room.id }}</td>
-                <td>{{ room.RoomNum }}</td>
-                <td>{{ room.Places }}</td>
-                <td>{{ room.Floor }}</td>
-                <td>{{ room.RoomStatus }}</td>
-                <td>
+                <td style="padding: 3px;border: 1px solid ;text-align: center;">{{ room.id }}</td>
+                <td style="padding: 3px;border: 1px solid ;text-align: center;">{{ room.RoomNum }}</td>
+                <td style="padding: 3px;border: 1px solid ;text-align: center;">{{ room.Places }}</td>
+                <td style="padding: 3px;border: 1px solid ;text-align: center;">{{ room.Floor }}</td>
+                <td style="padding: 3px;border: 1px solid ;text-align: center;">{{ room.RoomStatus }}</td>
+                <td style="padding: 3px;border: 1px solid ;text-align: center;">
                     <a href="{{ path('app_rooms_show', {'id': room.id}) }}">show</a>
                     <a href="{{ path('app_rooms_edit', {'id': room.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6" style="padding: 3px;border: 1px solid ;text-align: center;">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
