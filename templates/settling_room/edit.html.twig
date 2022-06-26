@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SettlingRoom{% endblock %}
+
+{% block body %}
+    <h1>Edit SettlingRoom</h1>
+
+    {{ include('settling_room/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_settling_room_index') }}">back to list</a>
+
+    {{ include('settling_room/_delete_form.html.twig') }}
+{% endblock %}

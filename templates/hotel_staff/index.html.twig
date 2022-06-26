@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сотрудники{% endblock %}
+
+{% block body %}
+    <form action="/room/type/" style="float: left">
+        <input type="submit" name="action" value="Типы комнат">
+    </form>
+    <form action="/settling/room" style="float: left">
+        <input type="submit" name="action" value="Даты">
+    </form>
+    <form action="/guests/" style="float: left">
+        <input type="submit" name="action" value="Гости">
+    </form>
+    <form action="/rooms/">
+        <input type="submit" name="action" value="Комнаты">
+    </form>
+    <h1>Сотрудники</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Сотрудника</th>
+                <th>ФИО</th>
+                <th>Зарплата</th>
+                <th>Рабочий график</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hotel_staff in hotel_staffs %}
+            <tr>
+                <td>{{ hotel_staff.id }}</td>
+                <td>{{ hotel_staff.StaffID }}</td>
+                <td>{{ hotel_staff.FIO }}</td>
+                <td>{{ hotel_staff.Salary }}</td>
+                <td>{{ hotel_staff.WorkShedule }}</td>
+                <td>
+                    <a href="{{ path('app_hotel_staff_show', {'id': hotel_staff.id}) }}">show</a>
+                    <a href="{{ path('app_hotel_staff_edit', {'id': hotel_staff.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hotel_staff_new') }}">Create new</a>
+{% endblock %}

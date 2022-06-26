@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SettlingRoom{% endblock %}
+
+{% block body %}
+    <h1>SettlingRoom</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ settling_room.id }}</td>
+            </tr>
+            <tr>
+                <th>SetDate</th>
+                <td>{{ settling_room.SetDate ? settling_room.SetDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DepartureDate</th>
+                <td>{{ settling_room.DepartureDate ? settling_room.DepartureDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_settling_room_index') }}">back to list</a>
+
+    <a href="{{ path('app_settling_room_edit', {'id': settling_room.id}) }}">edit</a>
+
+    {{ include('settling_room/_delete_form.html.twig') }}
+{% endblock %}

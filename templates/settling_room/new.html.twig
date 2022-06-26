@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SettlingRoom{% endblock %}
+
+{% block body %}
+    <h1>Create new SettlingRoom</h1>
+
+    {{ include('settling_room/_form.html.twig') }}
+
+    <a href="{{ path('app_settling_room_index') }}">back to list</a>
+{% endblock %}

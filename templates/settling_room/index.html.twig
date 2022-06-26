@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Даты{% endblock %}
+
+{% block body %}
+    <form action="/room/type/" style="float: left">
+        <input type="submit" name="action" value="Типы комнат">
+    </form>
+    <form action="/hotel/staff/" style="float: left">
+        <input type="submit" name="action" value="Сотрудники">
+    </form>
+    <form action="/guests/" style="float: left">
+        <input type="submit" name="action" value="Гости">
+    </form>
+    <form action="/rooms/">
+        <input type="submit" name="action" value="Комнаты">
+    </form>
+    <h1>Даты</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата заезда</th>
+                <th>Дата выезда</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for settling_room in settling_rooms %}
+            <tr>
+                <td>{{ settling_room.id }}</td>
+                <td>{{ settling_room.SetDate ? settling_room.SetDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ settling_room.DepartureDate ? settling_room.DepartureDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_settling_room_show', {'id': settling_room.id}) }}">show</a>
+                    <a href="{{ path('app_settling_room_edit', {'id': settling_room.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_settling_room_new') }}">Create new</a>
+{% endblock %}

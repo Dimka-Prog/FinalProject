@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Гости{% endblock %}
+
+{% block body %}
+    <form action="/room/type/" style="float: left">
+        <input type="submit" name="action" value="Типы комнат">
+    </form>
+    <form action="/settling/room" style="float: left">
+        <input type="submit" name="action" value="Даты">
+    </form>
+    <form action="/hotel/staff/" style="float: left">
+        <input type="submit" name="action" value="Сотрудники">
+    </form>
+    <form action="/rooms/">
+        <input type="submit" name="action" value="Комнаты">
+    </form>
+    <h1>Гости</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Номер паспорта</th>
+                <th>ФИО</th>
+                <th>Гражданство</th>
+                <th>Тип гостя</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for guest in guests %}
+            <tr>
+                <td>{{ guest.id }}</td>
+                <td>{{ guest.PassportNum }}</td>
+                <td>{{ guest.FIO }}</td>
+                <td>{{ guest.CitizenShip }}</td>
+                <td>{{ guest.TypeGuests }}</td>
+                <td>
+                    <a href="{{ path('app_guests_show', {'id': guest.id}) }}">show</a>
+                    <a href="{{ path('app_guests_edit', {'id': guest.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_guests_new') }}">Create new</a>
+{% endblock %}
