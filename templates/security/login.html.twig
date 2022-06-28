@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Аутентификация{% endblock %}
+
+{% block body %}
+<form method="post" style="float: left; margin-left: 43%">
+{#    {% if error %}#}
+{#        <div class="alert alert-danger" style="color: brown; font-size: 18px">Не правильно введено имя пользователя или пароль!</div>#}
+{#    {% endif %}#}
+
+{#    {% if app.user %}#}
+{#        <div class="mb-3" style="font-size: 18px; color: #218BC3 ">#}
+{#            Вы вошли в систему как {{ app.user.userIdentifier }}, для выхода нажмите <a href="{{ path('app_login') }}">Выйти</a>#}
+{#        </div>#}
+{#    {% endif %}#}
+
+    <h1 class="h3 mb-3 font-weight-normal" style="margin-left: 55px">Вход</h1>
+    <label>
+        <input type="text" value="{{ last_username }}" name="username" class="form-control" autocomplete="username" placeholder="Имя пользователя" style="height: 30px; font-size: 14px" required autofocus>
+    </label><br>
+    <label>
+        <input type="password" name="password" class="form-control" autocomplete="current-password" placeholder="Пароль" style="height: 30px; font-size: 14px; margin-top: 7px" required>
+    </label><br>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit" style="margin-left: 35px; margin-top: 15px; width: 125px; height: 30px; background-color: #0f6674; color: white; font-size: 14px">
+        Войти
+    </button>
+</form>
+    <form action="/register" style="float: right;">
+        <input type="submit" value="Регистрация" style="width: 125px; height: 30px; background-color: #9fcdff; color: white; font-size: 14px"> <br>
+    </form>
+{% endblock %}

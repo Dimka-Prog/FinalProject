@@ -44,9 +44,9 @@ class SettlingRoom
         return $this->id;
     }
 
-    public function __getString(): ?string
+    public function __toString(): string
     {
-        return $this->DepartureDate;
+        return $this->SetDate->format('Y-m-d H:i:s');
     }
 
     public function getSetDate(): ?\DateTimeInterface

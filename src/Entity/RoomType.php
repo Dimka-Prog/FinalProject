@@ -46,7 +46,7 @@ class RoomType
 
     public function __toString(): string
     {
-	    return $this->RoomType;
+	return $this->RoomType;
     }
 
     public function getId(): ?int
